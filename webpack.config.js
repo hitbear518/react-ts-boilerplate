@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: ['./src/index'],
   output: {
+    publicPath: '/',
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
   },
@@ -21,4 +22,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   plugins: [new HtmlWebpackPlugin(), new webpack.NamedModulesPlugin()],
+  devServer: {
+    historyApiFallback: true,
+  },
 };
