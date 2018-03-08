@@ -5,36 +5,36 @@ import {
   Link,
   RouteComponentProps,
 } from 'react-router-dom';
+import { Provider, Store, connect } from 'react-redux';
 import { hot } from 'react-hot-loader';
+import { RootState } from './reducers';
+import Counter from './Counter';
+import Home from './Home';
 
-const App = () => (
-  <Router>
-    <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/topics">Topics</Link>
-        </li>
-      </ul>
+const App = ({ store }: { store: Store<RootState> }) => (
+  <Provider store={store}>
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/topics">Topics</Link>
+          </li>
+        </ul>
 
-      <hr />
-
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/topics" component={Topics} />
-    </div>
-  </Router>
-);
-
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
+        <hr />
+        <Home foo="foo" />
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/topics" component={Topics} />
+      </div>
+    </Router>
+  </Provider>
 );
 
 const About = () => (

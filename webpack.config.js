@@ -21,7 +21,12 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
-  plugins: [new HtmlWebpackPlugin(), new webpack.NamedModulesPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/template.html',
+    }),
+    new webpack.NamedModulesPlugin(),
+  ],
   devServer: {
     historyApiFallback: true,
   },

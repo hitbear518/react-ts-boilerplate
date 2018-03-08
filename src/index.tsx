@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import App from './App';
+import configureStore from './store/configureStore';
 
-const root = document.createElement('div');
-document.body.appendChild(root);
+const root = document.getElementById('root');
 
-render(<App />, root);
+const store = configureStore();
+
+render(<App store={store} />, root);
